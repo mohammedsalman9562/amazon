@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../images/logo.png";
-import cart from "../../images/cart.png"
+import carts from "../../images/carts.png"
 
 import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -88,9 +88,17 @@ const Header =() =>{
                 <p className="text-white font-bold flex items-center ">& Favorites</p>
             </div>
             {/*cart*/}
-            <div>
-                <Image className="w-auto object-cover h-8" src={cart} alt="cartimg"/>
-            </div>
+            
+            
+                <div className="relative flex">
+                <span className=""><Image className="w-[42px] object-cover h-[36px]" src={carts} alt="cartimg"/></span>
+                    <p className="absolute text-ml text-amazon_yellow top-1/4 left-[20.5px] -translate-x-1/2 -translate-y-1/2">
+                0</p>
+                <p className="text-ml text-white font-bold mt-3">Cart</p>
+                
+                
+                </div>
+            
             </div>
         </div>
     );
