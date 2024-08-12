@@ -3,15 +3,30 @@ import Header from "@/components/header/Header";
 import { Inter } from "next/font/google";
 import HeaderBottom from "@/components/header/HeaderBottom";
 import Footer from "@/components/Footer";
+import Banner from "@/components/Banner";
+import Products from "@/components/product";
+import { ProductProps } from "@/type";
 
-const inter = Inter({ subsets: ["latin"] });
+interface Props{
+  productData: ProductProps;
+}
 
-export default function Home() {
+export default function Home({productData} : Props) {
+  console.log(productData);
   return (
     <main>
 
-      <div className="py-10 bg-gray-300">Home Page</div>
-
+      <div>
+      <Banner/>
+      <Products productData={productData}/>
+      </div>
+      
     </main>
   )
+}
+
+export const getServerSideProps = async() => {
+  const res= await fetch("https://fakestoreapiserver.reactbd.com/tech");
+  const productData = await res.json();
+  return{props: {productData}};
 }
